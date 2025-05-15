@@ -3,27 +3,39 @@
   "version": "1.0.0",
   "main": "index.js",
   "description": "A Playwright testing framework project",
-  "author":"gouravJainPrivate",
-  "license":"practiceFrameworkOfPlaywrightbyGOurav",
+  "author": "",
+  "license": "ISC",
   "scripts": {
-    
     "test": "playwright test ./tests/",
     "test:headed": "npx playwright test --headed",
     "test:report": "npx playwright show-report",
     "test:debug": "npx playwright test --debug",
     "test:dev": "env ENV=dev npx playwright test",
     "test:test": "env ENV=test npx playwright test",
-    "test:prod": "env ENV=prod npx playwright test"
+    "test:prod": "env ENV=prod npx playwright test",
+
+
+    "clean:allure": "rimraf -rf allure-results allure-report",
+    "prep:allure": "yarn clean:allure && echo 'Now run your test manually.'",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:report": "yarn allure:generate && yarn allure:open"
+
+
+    
+     
+    
+
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.13.0",
     "@playwright/test": "^1.52.0-alpha-2025-03-18",
     "@stylistic/eslint-plugin-ts": "^2.9.0",
     "@types/node": "^22.1.0",
+    "allure-playwright": "^3.2.2",
+    "cross-env": "^7.0.3",
     "dayjs": "^1.11.13",
     "dotenv": "16.4.5",
     "eslint": "^9.13.0",
@@ -31,13 +43,9 @@
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.11.0",
     "prettier": "^3.3.3",
-    "typescript": "^5.6.3", 
-    "typescript-eslint": "^8.11.0",
-    "cross-env": "^7.0.3"
-
-
-
-
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.11.0"
   },
   "dependencies": {
     "chance": "^1.1.12",
